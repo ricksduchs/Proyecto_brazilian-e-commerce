@@ -27,7 +27,7 @@ GROUP BY product_category_name_english
 ORDER BY cantidad_vendida DESC
 LIMIT 10;
 
-SELECT product_category_name_english, SUM(price) AS ganancia
+SELECT product_category_name_english, SUM(price) AS ventas_totales
 FROM product_fact
 GROUP BY product_category_name_english
 ORDER BY ganancia DESC
