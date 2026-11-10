@@ -27,7 +27,7 @@ order_delivered_customer_date TIMESTAMP,
 order_estimated_delivery_date TIMESTAMP
 );
 
-CREATE TABLE produtcs(
+CREATE TABLE products(
 product_id	VARCHAR(100),
 product_category_name VARCHAR(100),
 product_name_lenght	INTEGER,
@@ -39,7 +39,15 @@ product_height_cm DECIMAL(6,2),
 product_width_cm DECIMAL(6,2)
 );
 
-CREATE TABLE rellers(
+CREATE TABLE customers(
+customer_id	VARCHAR(100),
+customer_unique_id VARCHAR(100),
+customer_zip_code_prefix VARCHAR(100),
+customer_city VARCHAR(100),
+customer_state CHAR(2),
+);
+
+CREATE TABLE sellers(
 seller_id VARCHAR(100),
 seller_zip_code_prefix	INTEGER,
 seller_city	VARCHAR(100),
