@@ -15,13 +15,13 @@ GROUP BY product_id
 ORDER BY ganancia DESC
 LIMIT 10;
 
-SELECT product_id, COUNT(price) AS cantidad_vendida
+SELECT product_id, COUNT(*) AS cantidad_vendida
 FROM product_fact
 GROUP BY product_id
 ORDER BY cantidad_vendida DESC
 LIMIT 10;
 
-SELECT product_category_name_english, COUNT(price) AS cantidad_vendida
+SELECT product_category_name_english, COUNT(*) AS cantidad_vendida
 FROM product_fact
 GROUP BY product_category_name_english
 ORDER BY cantidad_vendida DESC
@@ -39,7 +39,7 @@ GROUP BY seller_id
 ORDER BY ganancia DESC
 LIMIT 10;
 
-SELECT seller_id, COUNT(price) AS cantidad_vendida
+SELECT seller_id, COUNT(*) AS cantidad_vendida
 FROM product_fact
 GROUP BY seller_id
 ORDER BY cantidad_vendida DESC

@@ -52,17 +52,30 @@ JOIN product_category AS c
     ON p.product_category_name = c.product_category_name;
 
 CREATE VIEW customer_fact_geo AS
+WITH geolocation_grouped AS (
+    SELECT
+        geolocation_zip_code_prefix,
+        AVG(geolocation_lat) AS latitude,
+        AVG(geolocation_lng) AS longitude
+    FROM geolocation
+    GROUP BY geolocation_zip_code_prefix
+)
+
 SELECT
     o.order_id,
     c.customer_id,
     o.order_status,
-	c.customer_city,
-	c.customer_state,
+    c.customer_city,
+    c.customer_state,
     g.geolocation_zip_code_prefix,
-	g.geolocation_city,
-	g.geolocation_state
+    g.latitude,
+    g.longitude
+
 FROM orders AS o
+
 JOIN customers AS c
-ON o.customer_id = c.customer_id
-JOIN geolocation AS g
-ON c.customer_zip_code_prefix = g.geolocation_zip_code_prefix;
+    ON o.customer_id = c.customer_id
+
+LEFT JOIN geolocation_grouped AS g
+    ON c.customer_zip_code_prefix =
+       g.geolocation_zip_code_prefix;

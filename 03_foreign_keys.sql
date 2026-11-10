@@ -28,3 +28,7 @@ ADD CONSTRAINT fk_orders_items_sellers
 FOREIGN KEY (seller_id)
 REFERENCES sellers(seller_id);
 
+ALTER TABLE products
+ADD CONSTRAINT fk_products_product_category
+FOREIGN KEY (product_category_name)
+REFERENCES product_category(product_category_name);
